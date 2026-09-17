@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Three-Tone Gold Stacking Bracelets</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%23c9a96e' stroke-width='6'/><circle cx='50' cy='50' r='18' fill='%23c9a96e'/></svg>">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+  :root {
+    --bg: #111010;
+    --bg2: #1a1816;
+    --bg3: #242019;
+    --gold: #c9a96e;
+    --gold-light: #e0c99a;
+    --gold-dim: #8a7346;
+    --text: #e8e0d4;
+    --text-dim: #9a9080;
+    --line: rgba(201,169,110,0.2);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Jost', 'Noto Sans SC', sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .serif { font-family: 'Cormorant Garamond', 'Noto Serif SC', serif; }
+
+  /* ===== LANG SWITCHER ===== */
+  .lang-switcher {
+    position: fixed;
+    top: 1.2rem;
+    right: 1.2rem;
+    z-index: 100;
+    display: flex;
+    gap: 0;
+    background: rgba(17,16,16,0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .lang-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: var(--text-dim);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-family: 'Jost', 'Noto Sans SC', sans-serif;
+  }
+  .lang-btn:hover { color: var(--gold-light); }
+  .lang-btn.active {
+    color: var(--gold);
+    background: rgba(201,169,110,0.1);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('assets/M5.png') center/cover no-repeat;
+    opacity: 0.55;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(17,16,16,0.3) 0%, rgba(17,16,16,0.7) 70%, var(--bg) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+  }
+  .hero-tag {
+    font-size: 0.85rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+  .hero h1 .gold { color: var(--gold); }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.9;
+  }
+  .hero-divider {
+    width: 60px; height: 1px;
+    background: var(--gold);
+    margin: 0 auto 2rem;
+  }
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold-dim);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    z-index: 2;
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .section-desc {
+    color: var(--text-dim);
+    max-width: 600px;
+    margin-bottom: 3rem;
+    font-size: 1rem;
+  }
+
+  /* ===== OVERVIEW ===== */
+  .overview { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .overview img { width: 100%; border-radius: 4px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .overview-text h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 1.5rem; }
+  .overview-text p { color: var(--text-dim); margin-bottom: 1.2rem; }
+  .feature-list { list-style: none; margin-top: 2rem; }
+  .feature-list li { padding: 0.8rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 0.8rem; }
+  .feature-list li::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+  /* ===== DESIGNS ===== */
+  .designs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 800px; margin: 0 auto; }
+  .design-card { background: var(--bg2); border-radius: 6px; overflow: hidden; transition: transform 0.3s; }
+  .design-card:hover { transform: translateY(-4px); }
+  .design-card img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+  .design-card-body { padding: 1.5rem; }
+  .design-card-body h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+  .design-card-body p { color: var(--text-dim); font-size: 0.9rem; }
+  .design-num { font-size: 0.75rem; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 0.5rem; }
+
+  /* ===== LIFESTYLE ===== */
+  .lifestyle { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .lifestyle img { width: 100%; border-radius: 4px; object-fit: cover; }
+
+  /* ===== CRAFT ===== */
+  .craft { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .craft img { width: 100%; border-radius: 4px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .craft-points { display: grid; gap: 2rem; margin-top: 2rem; }
+  .craft-point { padding-left: 1.5rem; border-left: 2px solid var(--gold); }
+  .craft-point h4 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+  .craft-point p { color: var(--text-dim); font-size: 0.9rem; }
+
+  /* ===== INDIVIDUAL ===== */
+  .individual { background: var(--bg2); border-radius: 8px; padding: 3rem; }
+  .individual img { width: 100%; border-radius: 4px; }
+
+  /* ===== PACKAGING ===== */
+  .packaging { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .packaging img { width: 100%; border-radius: 4px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+
+  /* ===== FOOTER ===== */
+  footer { text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--line); }
+  footer .brand { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  footer p { color: var(--text-dim); font-size: 0.85rem; }
+
+  @media (max-width: 768px) {
+    .overview, .craft, .packaging { grid-template-columns: 1fr; gap: 2rem; }
+    .designs-grid { grid-template-columns: 1fr; }
+    .lifestyle { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.5rem; }
+    .individual { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE SWITCHER -->
+<div class="lang-switcher">
+  <button class="lang-btn active" data-lang="en">EN</button>
+  <button class="lang-btn" data-lang="zh">中文</button>
+  <button class="lang-btn" data-lang="ms">BM</button>
+</div>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag" data-i18n="hero_tag">THREE-TONE GOLD COLLECTION</div>
+    <h1 class="serif" data-i18n="hero_title">Stacked in Gold,<br><span class="gold">Worn in Style</span></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub" data-i18n="hero_sub">Beaded Chain · Floral Pave Chain<br>Two layered designs, three tones intertwined, effortless everyday luxury.</p>
+  </div>
+  <div class="hero-scroll" data-i18n="scroll">SCROLL</div>
+</div>
+
+<!-- ===== OVERVIEW ===== -->
+<section>
+  <div class="overview">
+    <img src="assets/D1.png" alt="Bracelets on velvet">
+    <div class="overview-text">
+      <div class="section-label" data-i18n="ov_label">COLLECTION</div>
+      <h2 class="serif" data-i18n="ov_title">One is never enough</h2>
+      <p data-i18n="ov_text">Two distinct metal bracelets blending yellow gold, rose gold, and silver tones. Wear them solo for understated elegance, or stack them together for layered dimension. From the playful movement of beaded chain to the delicate floral motifs, each piece has its own character.</p>
+      <ul class="feature-list">
+        <li data-i18n="ov_f1">Three-tone metal layering for rich, versatile style</li>
+        <li data-i18n="ov_f2">Two chain types — mix, match, and restack as you like</li>
+        <li data-i18n="ov_f3">Premium finish for everyday and occasion wear</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DESIGNS ===== -->
+<section>
+  <div class="section-label" data-i18n="ds_label">TWO STYLES</div>
+  <h2 class="section-title serif" data-i18n="ds_title">Two designs, two moods</h2>
+  <p class="section-desc" data-i18n="ds_desc">From playful beads to delicate florals, two chain styles for every look.</p>
+  <div class="designs-grid">
+    <div class="design-card">
+      <img src="assets/M2.png" alt="Beaded chain">
+      <div class="design-card-body">
+        <div class="design-num">STYLE 01</div>
+        <h3 class="serif" data-i18n="ds1_title">Beaded Chain</h3>
+        <p data-i18n="ds1_desc">Smooth gold beads alternating with faceted crystal-cut spheres — light dances across every angle, playful and refined.</p>
+      </div>
+    </div>
+    <div class="design-card">
+      <img src="assets/M3.png" alt="Floral chain">
+      <div class="design-card-body">
+        <div class="design-num">STYLE 02</div>
+        <h3 class="serif" data-i18n="ds2_title">Floral Pave Chain</h3>
+        <p data-i18n="ds2_desc">Petal-shaped links set with clear stones, woven in gold and rose gold — soft, romantic, and endlessly sparkling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LIFESTYLE ===== -->
+<section>
+  <div class="section-label" data-i18n="ls_label">STYLING</div>
+  <h2 class="section-title serif" data-i18n="ls_title">Layered beauty, everyday glow</h2>
+  <p class="section-desc" data-i18n="ls_desc">By the window light or at your desk, these stacked bracelets elevate any everyday look.</p>
+  <div class="lifestyle">
+    <img src="assets/D2.png" alt="Hands stacked">
+    <img src="assets/D4.png" alt="Desk scene">
+  </div>
+</section>
+
+<!-- ===== CRAFT ===== -->
+<section>
+  <div class="craft">
+    <div>
+      <div class="section-label" data-i18n="cr_label">CRAFTSMANSHIP</div>
+      <h2 class="section-title serif" data-i18n="cr_title">Details that show</h2>
+      <p class="section-desc" data-i18n="cr_desc">Every link, every bead, every stone — made to hold up to close inspection.</p>
+      <div class="craft-points">
+        <div class="craft-point">
+          <h4 data-i18n="cr1_title">Faceted Bead Finish</h4>
+          <p data-i18n="cr1_desc">Multi-cut bead surfaces reflect light from every angle for a lively, dynamic shine.</p>
+        </div>
+        <div class="craft-point">
+          <h4 data-i18n="cr2_title">Petal Stone Setting</h4>
+          <p data-i18n="cr2_desc">Clear stones set within petal-shaped links refract light for delicate brilliance.</p>
+        </div>
+        <div class="craft-point">
+          <h4 data-i18n="cr3_title">Tri-Tone Fusion</h4>
+          <p data-i18n="cr3_desc">Yellow gold, rose gold, and silver tones transition naturally for layered depth.</p>
+        </div>
+      </div>
+    </div>
+    <img src="assets/D3.png" alt="Craft details">
+  </div>
+</section>
+
+<!-- ===== INDIVIDUAL ===== -->
+<section>
+  <div class="section-label" data-i18n="in_label">PIECE BY PIECE</div>
+  <h2 class="section-title serif" data-i18n="in_title">Two bracelets, endless combinations</h2>
+  <p class="section-desc" data-i18n="in_desc">Wear them alone for clean simplicity, or stacked for rich, layered dimension.</p>
+  <div class="individual">
+    <img src="assets/D5.png" alt="Individual pieces">
+  </div>
+</section>
+
+<!-- ===== PACKAGING ===== -->
+<section>
+  <div class="packaging">
+    <img src="assets/D6.png" alt="Packaging">
+    <div>
+      <div class="section-label" data-i18n="pk_label">PACKAGING</div>
+      <h2 class="section-title serif" data-i18n="pk_title">Packaged to impress</h2>
+      <p class="section-desc" data-i18n="pk_desc">A dark premium jewelry box with silk lining — a ritual from the first glimpse to the first wear.</p>
+      <ul class="feature-list">
+        <li data-i18n="pk_f1">Premium dark jewelry box</li>
+        <li data-i18n="pk_f2">Silk lining protects every detail</li>
+        <li data-i18n="pk_f3">Perfect for birthdays, anniversaries, and gifting</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="brand serif" data-i18n="ft_brand">Three-Tone Gold Stacking Bracelets</div>
+  <p data-i18n="ft_text">Beaded Chain · Floral Pave Chain | Tri-tone metal collection</p>
+</footer>
+
+<script>
+const i18n = {
+  en: {
+    hero_tag: "THREE-TONE GOLD COLLECTION",
+    hero_title: 'Stacked in Gold,<br><span class="gold">Worn in Style</span>',
+    hero_sub: "Beaded Chain · Floral Pave Chain<br>Two layered designs, three tones intertwined, effortless everyday luxury.",
+    scroll: "SCROLL",
+    ov_label: "COLLECTION",
+    ov_title: "One is never enough",
+    ov_text: "Two distinct metal bracelets blending yellow gold, rose gold, and silver tones. Wear them solo for understated elegance, or stack them together for layered dimension. From the playful movement of beaded chain to the delicate floral motifs, each piece has its own character.",
+    ov_f1: "Three-tone metal layering for rich, versatile style",
+    ov_f2: "Two chain types — mix, match, and restack as you like",
+    ov_f3: "Premium finish for everyday and occasion wear",
+    ds_label: "TWO STYLES",
+    ds_title: "Two designs, two moods",
+    ds_desc: "From playful beads to delicate florals, two chain styles for every look.",
+    ds1_title: "Beaded Chain",
+    ds1_desc: "Smooth gold beads alternating with faceted crystal-cut spheres — light dances across every angle, playful and refined.",
+    ds2_title: "Floral Pave Chain",
+    ds2_desc: "Petal-shaped links set with clear stones, woven in gold and rose gold — soft, romantic, and endlessly sparkling.",
+    ls_label: "STYLING",
+    ls_title: "Layered beauty, everyday glow",
+    ls_desc: "By the window light or at your desk, these stacked bracelets elevate any everyday look.",
+    cr_label: "CRAFTSMANSHIP",
+    cr_title: "Details that show",
+    cr_desc: "Every link, every bead, every stone — made to hold up to close inspection.",
+    cr1_title: "Faceted Bead Finish",
+    cr1_desc: "Multi-cut bead surfaces reflect light from every angle for a lively, dynamic shine.",
+    cr2_title: "Petal Stone Setting",
+    cr2_desc: "Clear stones set within petal-shaped links refract light for delicate brilliance.",
+    cr3_title: "Tri-Tone Fusion",
+    cr3_desc: "Yellow gold, rose gold, and silver tones transition naturally for layered depth.",
+    in_label: "PIECE BY PIECE",
+    in_title: "Two bracelets, endless combinations",
+    in_desc: "Wear them alone for clean simplicity, or stacked for rich, layered dimension.",
+    pk_label: "PACKAGING",
+    pk_title: "Packaged to impress",
+    pk_desc: "A dark premium jewelry box with silk lining — a ritual from the first glimpse to the first wear.",
+    pk_f1: "Premium dark jewelry box",
+    pk_f2: "Silk lining protects every detail",
+    pk_f3: "Perfect for birthdays, anniversaries, and gifting",
+    ft_brand: "Three-Tone Gold Stacking Bracelets",
+    ft_text: "Beaded Chain · Floral Pave Chain | Tri-tone metal collection"
+  },
+  zh: {
+    hero_tag: "三色金系列",
+    hero_title: '三色金叠戴<br><span class="gold">手链系列</span>',
+    hero_sub: "圆珠链 · 花叶链<br>两款叠戴，三色交织，演绎轻奢日常的层次美学。",
+    scroll: "向下滚动",
+    ov_label: "产品系列",
+    ov_title: "一条不够，两条刚好",
+    ov_text: "两款不同风格的金属手链，融合黄金、玫瑰金与白金色调，既可单戴简约日常，亦可叠戴打造层次感。从圆珠链的灵动到花叶链的精致，每一款都有独立性格。",
+    ov_f1: "三色金属交织，层次丰富不单调",
+    ov_f2: "两款链型自由组合，随心搭配",
+    ov_f3: "轻奢质感，日常与场合皆宜",
+    ds_label: "两款设计",
+    ds_title: "两款设计，各有性格",
+    ds_desc: "从灵动圆珠到精致花叶，两种链型满足不同穿搭场景。",
+    ds1_title: "圆珠链",
+    ds1_desc: "光滑金珠与车花刻面珠交替排列，光泽随角度流转，灵动精致。",
+    ds2_title: "花叶镶石链",
+    ds2_desc: "花瓣造型链节镶嵌透明石，黄金与玫瑰金交织，柔美而不失闪耀。",
+    ls_label: "叠戴搭配",
+    ls_title: "叠戴美学，日常即高光",
+    ls_desc: "无论是窗边晨光还是办公桌前，手链的叠戴效果都能为日常造型加分。",
+    cr_label: "工艺细节",
+    cr_title: "细节见真章",
+    cr_desc: "每一处链节、每一颗珠子、每一颗镶嵌石，都经得起近距离审视。",
+    cr1_title: "车花珠面工艺",
+    cr1_desc: "珠面刻面切割，多角度反射光线，光泽灵动不呆板。",
+    cr2_title: "花瓣镶嵌",
+    cr2_desc: "花瓣造型链节内嵌透明石，光线穿透折射，精致闪耀。",
+    cr3_title: "三色拼接",
+    cr3_desc: "黄金、玫瑰金、白金色调自然过渡，层次分明。",
+    in_label: "款式拆解",
+    in_title: "两条手链，无限组合",
+    in_desc: "单独佩戴简约大方，组合叠戴层次丰富。",
+    pk_label: "包装",
+    pk_title: "精致包装，送礼自用皆宜",
+    pk_desc: "深色高级首饰盒搭配丝绸衬布，从打开到佩戴，每一步都是仪式感。",
+    pk_f1: "高级深色首饰盒包装",
+    pk_f2: "丝绸衬布保护首饰",
+    pk_f3: "适合生日、纪念日、节日送礼",
+    ft_brand: "三色金叠戴手链系列",
+    ft_text: "圆珠链 · 花叶镶石链 | 三色金属交织"
+  },
+  ms: {
+    hero_tag: "KOLEKSI EMAS TIGA WARNA",
+    hero_title: 'Disusun dalam Emas,<br><span class="gold">Dipakai dengan Gaya</span>',
+    hero_sub: "Rantai Manik · Rantai Bunga Batu<br>Dua reka bentuk berlapis, tiga warna bercantum, kemewahan harian yang ringkas.",
+    scroll: "SKROL",
+    ov_label: "KOLEKSI",
+    ov_title: "Satu tidak pernah cukup",
+    ov_text: "Dua rantai logam berbeza menggabungkan emas kuning, emas merah jambu dan ton perak. Pakai secara berasingan untuk keanggunan ringkas, atau susun bersama untuk lapisan yang kaya. Dari pergerakan ceria rantai manik ke motif bunga yang halus, setiap aksesori ada personalitinya sendiri.",
+    ov_f1: "Lapisan logam tiga warna untuk gaya yang pelbagai",
+    ov_f2: "Dua jenis rantai — campur, padan dan susun semula sesukanya",
+    ov_f3: "Kemasan premium untuk pakaian harian dan majlis",
+    ds_label: "DUA GAYA",
+    ds_title: "Dua reka bentuk, dua mood",
+    ds_desc: "Dari manik ceria ke bunga halus, dua gaya rantai untuk setiap penampilan.",
+    ds1_title: "Rantai Manik",
+    ds1_desc: "Manik emas licin berselang dengan sfera berpotongan kristal — cahaya menari di setiap sudut, ceria dan halus.",
+    ds2_title: "Rantai Bunga Batu",
+    ds2_desc: "Pautan berbentuk kelopak dihiasi batu lutsinar, ditenun dalam emas dan emas merah jambu — lembut, romantis dan berkilau.",
+    ls_label: "GAYA",
+    ls_title: "Keindahan berlapis, cahaya harian",
+    ls_desc: "Di bawah cahaya tingkap atau di meja kerja, rantai yang disusun ini menyerlahkan penampilan harian.",
+    cr_label: "KERAJINAN",
+    cr_title: "Butiran yang menonjol",
+    cr_desc: "Setiap pautan, setiap manik, setiap batu — dicipta untuk menahan pemeriksaan rapat.",
+    cr1_title: "Kemasan Manik Berpotongan",
+    cr1_desc: "Permukaan manik yang dipotong pelbagai memantulkan cahaya dari semua sudut untuk kilauan dinamik.",
+    cr2_title: "Batu Tetap Kelopak",
+    cr2_desc: "Batu lutsinar dalam pautan berbentuk kelopak membiaskan cahaya untuk kecemerlangan halus.",
+    cr3_title: "Gabungan Tiga Warna",
+    cr3_desc: "Emas kuning, emas merah jambu dan ton perak beralih secara semula jadi untuk kedalaman berlapis.",
+    in_label: "SETIAP HELAIAN",
+    in_title: "Dua gelang, kombinasi tidak terhingga",
+    in_desc: "Pakai secara bersendirian untuk kesederhanaan bersih, atau disusun untuk dimensi berlapis yang kaya.",
+    pk_label: "PEMBUNGKUSAN",
+    pk_title: "Dibungkus untuk mengagumkan",
+    pk_desc: "Kotak barang kemas premium gelap dengan lapisan sutera — satu ritual dari pandangan pertama hingga pemakaian pertama.",
+    pk_f1: "Kotak barang kemas gelap premium",
+    pk_f2: "Lapisan sutera melindungi setiap butiran",
+    pk_f3: "Sesuai untuk hari lahir, ulang tahun dan hadiah",
+    ft_brand: "Rantai Tiga Warna Emas Berlapis",
+    ft_text: "Rantai Manik · Rantai Bunga Batu | Koleksi logam tiga warna"
+  }
+};
+
+function setLang(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang] && i18n[lang][key]) {
+      el.innerHTML = i18n[lang][key];
+    }
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang === 'ms' ? 'ms' : 'en';
+  localStorage.setItem('lang', lang);
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLang(btn.dataset.lang));
+});
+
+// Restore saved language
+const saved = localStorage.getItem('lang');
+if (saved && i18n[saved]) setLang(saved);
+</script>
+
+</body>
+</html>
