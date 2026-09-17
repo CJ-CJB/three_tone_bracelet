@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三色金叠戴手链 · 产品介绍</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%23c9a96e' stroke-width='6'/><circle cx='50' cy='50' r='18' fill='%23c9a96e'/></svg>">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+  :root {
+    --bg: #111010;
+    --bg2: #1a1816;
+    --bg3: #242019;
+    --gold: #c9a96e;
+    --gold-light: #e0c99a;
+    --gold-dim: #8a7346;
+    --text: #e8e0d4;
+    --text-dim: #9a9080;
+    --line: rgba(201,169,110,0.2);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans SC', sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .serif { font-family: 'Noto Serif SC', serif; }
+
+  /* ===== HERO POSTER ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('assets/M5.png') center/cover no-repeat;
+    opacity: 0.55;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(17,16,16,0.3) 0%, rgba(17,16,16,0.7) 70%, var(--bg) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+  }
+  .hero-tag {
+    font-size: 0.85rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+  .hero h1 .gold { color: var(--gold); }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.9;
+  }
+  .hero-divider {
+    width: 60px; height: 1px;
+    background: var(--gold);
+    margin: 0 auto 2rem;
+  }
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold-dim);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    z-index: 2;
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .section-desc {
+    color: var(--text-dim);
+    max-width: 600px;
+    margin-bottom: 3rem;
+    font-size: 1rem;
+  }
+
+  /* ===== OVERVIEW ===== */
+  .overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .overview img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .overview-text h2 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    margin-bottom: 1.5rem;
+  }
+  .overview-text p {
+    color: var(--text-dim);
+    margin-bottom: 1.2rem;
+  }
+  .feature-list {
+    list-style: none;
+    margin-top: 2rem;
+  }
+  .feature-list li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .feature-list li::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ===== THREE DESIGNS ===== */
+  .designs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .design-card {
+    background: var(--bg2);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .design-card:hover { transform: translateY(-4px); }
+  .design-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+  .design-card-body {
+    padding: 1.5rem;
+  }
+  .design-card-body h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .design-card-body p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+  .design-num {
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ===== LIFESTYLE ===== */
+  .lifestyle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .lifestyle img {
+    width: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+  .lifestyle .tall { grid-row: span 2; }
+
+  /* ===== CRAFT ===== */
+  .craft {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .craft img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .craft-points {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .craft-point {
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--gold);
+  }
+  .craft-point h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+  }
+  .craft-point p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+
+  /* ===== INDIVIDUAL ===== */
+  .individual {
+    background: var(--bg2);
+    border-radius: 8px;
+    padding: 3rem;
+  }
+  .individual img {
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  /* ===== PACKAGING ===== */
+  .packaging {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .packaging img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    border-top: 1px solid var(--line);
+  }
+  footer .brand {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  footer p {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .overview, .craft, .packaging {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .designs-grid {
+      grid-template-columns: 1fr;
+    }
+    .lifestyle {
+      grid-template-columns: 1fr;
+    }
+    section { padding: 4rem 1.5rem; }
+    .individual { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO POSTER ===== -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">THREE-TONE GOLD COLLECTION</div>
+    <h1 class="serif">三色金叠戴<br><span class="gold">手链系列</span></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">圆珠链 · 花叶链<br>两款叠戴，三色交织，演绎轻奢日常的层次美学</p>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</div>
+
+<!-- ===== PRODUCT OVERVIEW ===== -->
+<section>
+  <div class="overview">
+    <img src="assets/D1.png" alt="三色金手链陈列">
+    <div class="overview-text">
+      <div class="section-label">COLLECTION</div>
+      <h2 class="serif">一条不够，三条刚好</h2>
+      <p>两款不同风格的金属手链，融合黄金、玫瑰金与白金色调，既可单戴简约日常，亦可叠戴打造层次感。从圆珠链的灵动到花叶链的精致，每一款都有独立性格。</p>
+      <ul class="feature-list">
+        <li>三色金属交织，层次丰富不单调</li>
+        <li>两款链型自由组合，随心搭配</li>
+        <li>轻奢质感，日常与场合皆宜</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THREE DESIGNS ===== -->
+<section>
+  <div class="section-label">TWO STYLES</div>
+  <h2 class="section-title serif">两款设计，各有性格</h2>
+  <p class="section-desc">从灵动圆珠到精致花叶，两种链型满足不同穿搭场景。</p>
+  <div class="designs-grid">
+    <div class="design-card">
+      <img src="assets/M2.png" alt="圆珠链">
+      <div class="design-card-body">
+        <div class="design-num">STYLE 01</div>
+        <h3 class="serif">圆珠链</h3>
+        <p>光滑金珠与车花刻面珠交替排列，光泽随角度流转，灵动精致。</p>
+      </div>
+    </div>
+    <div class="design-card">
+      <img src="assets/M3.png" alt="花叶链">
+      <div class="design-card-body">
+        <div class="design-num">STYLE 02</div>
+        <h3 class="serif">花叶镶石链</h3>
+        <p>花瓣造型链节镶嵌透明石，黄金与玫瑰金交织，柔美而不失闪耀。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LIFESTYLE ===== -->
+<section>
+  <div class="section-label">STYLING</div>
+  <h2 class="section-title serif">叠戴美学，日常即高光</h2>
+  <p class="section-desc">无论是窗边晨光还是办公桌前，三条手链的叠戴效果都能为日常造型加分。</p>
+  <div class="lifestyle">
+    <img src="assets/D2.png" alt="叠戴搭配">
+    <img src="assets/D4.png" alt="桌面场景">
+  </div>
+</section>
+
+<!-- ===== CRAFT DETAILS ===== -->
+<section>
+  <div class="craft">
+    <div>
+      <div class="section-label">CRAFTSMANSHIP</div>
+      <h2 class="section-title serif">细节见真章</h2>
+      <p class="section-desc">每一处链节、每一颗珠子、每一颗镶嵌石，都经得起近距离审视。</p>
+      <div class="craft-points">
+        <div class="craft-point">
+          <h4>车花珠面工艺</h4>
+          <p>珠面刻面切割，多角度反射光线，光泽灵动不呆板。</p>
+        </div>
+        <div class="craft-point">
+          <h4>花瓣镶嵌</h4>
+          <p>花瓣造型链节内嵌透明石，光线穿透折射，精致闪耀。</p>
+        </div>
+        <div class="craft-point">
+          <h4>三色拼接</h4>
+          <p>黄金、玫瑰金、白金色调自然过渡，层次分明。</p>
+        </div>
+      </div>
+    </div>
+    <img src="assets/D3.png" alt="工艺细节">
+  </div>
+</section>
+
+<!-- ===== INDIVIDUAL PIECES ===== -->
+<section>
+  <div class="section-label">PIECE BY PIECE</div>
+  <h2 class="section-title serif">三条手链，三种可能</h2>
+  <p class="section-desc">单独佩戴简约大方，组合叠戴层次丰富。</p>
+  <div class="individual">
+    <img src="assets/D5.png" alt="款式拆解">
+  </div>
+</section>
+
+<!-- ===== PACKAGING ===== -->
+<section>
+  <div class="packaging">
+    <img src="assets/D6.png" alt="包装展示">
+    <div>
+      <div class="section-label">PACKAGING</div>
+      <h2 class="section-title serif">精致包装，送礼自用皆宜</h2>
+      <p class="section-desc">深色高级首饰盒搭配丝绸衬布，从打开到佩戴，每一步都是仪式感。</p>
+      <ul class="feature-list">
+        <li>高级深色首饰盒包装</li>
+        <li>丝绸衬布保护首饰</li>
+        <li>适合生日、纪念日、节日送礼</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="brand serif">三色金叠戴手链系列</div>
+  <p>圆珠链 · 花叶镶石链 &nbsp;|&nbsp; 三色金属交织</p>
+</footer>
+
+</body>
+</html>
